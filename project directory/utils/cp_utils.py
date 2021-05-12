@@ -39,15 +39,15 @@ def loss_acc_visualizer(losses_accs, path_dict):
                 linewidth = 2, label = 'Train Loss')
     # train과 validation의 losses 비교 visualization
 
-    ax2.plot(epoch_range, losses_accs['train_accs'], color = 'bat:orange', 
+    ax2.plot(epoch_range, losses_accs['train_accs'], color = 'tab:orange', 
             linestyle = ':', linewidth = 2, label = 'Train Accuracy')
-    ax2.plot(epoch_range, losses_accs['validation_accs'], color = 'bat:orange', 
+    ax2.plot(epoch_range, losses_accs['validation_accs'], color = 'tab:orange', 
             linestyle = ':', linewidth = 2, label = 'Validation Accuracy')
     # train과 validation의 accs 비교 visualization
 
     # 이 외 tick, spine, grid 같은건 알아서 설정
 
-    fig.savefig(path_dict['cp_path'] + '/losses_accs_visualization.png')
+    plt.savefig(path_dict['cp_path'] + '/losses_accs_visualization.png')
     # figure 저장
     # file save location = project directory/model_name/losses_accs_visualization.png
     # 같은 이름의 file이 이미 존재하면 덮어쓰기
@@ -56,9 +56,8 @@ def loss_acc_visualizer(losses_accs, path_dict):
     # close를 안하면 epoch이 돌 때마다 RAM이 점점 부족해짐. 이거 필수 
 
 def confusion_matrix_visualizer(con_mat, n_class, path_dict):
-    fig, ax = plt.subploys(figsize = (14, 14))
+    fig, ax = plt.subplots(figsize = (14, 14))
     ax.matshow(con_mat, cmap = 'Reds')
-
     M = np.max(con_mat)
     for r_idx in range(con_mat.shape[0]):
         for c_idx in range(con_mat.shape[1]):
@@ -66,8 +65,7 @@ def confusion_matrix_visualizer(con_mat, n_class, path_dict):
                 color = 'w'
             else:
                 color = 'k'
-
-            ax.text(c_idx, r_idx, con_mat[r_idx, c_idx], 
+            ax.text(x = c_idx, y = r_idx, s = con_mat[r_idx, c_idx].numpy(), 
                     fontsize = 15,
                     ha = 'center', va = 'center', 
                     color= color)
@@ -84,12 +82,12 @@ def confusion_matrix_visualizer(con_mat, n_class, path_dict):
                     labelsize = 20)
     ax.tick_params(colors = 'royalblue')
 
-    ax.set_title('Confusion Matrix for Validation DS', fontsize = 40, color = 'royalbule')
-    ax.set_ylabel('True Labels', fontsize = 30, color = 'royalbule')
-    ax.set_xlabel('Predicted Label', fontsize = 30, color = 'royalbule')
+    ax.set_title('Confusion Matrix for Validation DS', fontsize = 40, color = 'royalblue')
+    ax.set_ylabel('True Labels', fontsize = 30, color = 'royalblue')
+    ax.set_xlabel('Predicted Label', fontsize = 30, color = 'royalblue')
 
     fig.tight_layout()
-    fig.savefig(path_dict['cp_path'] + 'confustion_matrix_visualization')
+    plt.savefig(path_dict['cp_path'] + '/confustion_matrix_visualization.png')
     # figure 저장 
     # file save location = project directory/model_name/losses_accs_visualization.png
     # 같은 이름의 file이 이미 존재하면 덮어쓰기

@@ -12,8 +12,9 @@ from tensorflow.keras.metrics import Mean, SparseCategoricalAccuracy
 
 # ---------project에 관한 file이나 directory를 생성하는 함수---------
 def dir_setting(dir_name, CONTINUE_LEARNING):
-    cp_path = os.path.join(os.getcwd(), dir_name)
+    cp_path = os.path.join(os.getcwd() , dir_name)
     # 현재 경로에서 새 directory 경로 생성
+    # os.getcwd() 의 return이 상위 directory라서 path 추가함
     model_path = os.path.join(cp_path, 'model')
     # cp_path 경로 안에 새롭게 생성할 directory
     
