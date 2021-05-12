@@ -30,7 +30,7 @@ start_epoch = 0
 train_ratio = 0.8
 train_batch_size, test_batch_size = 32, 128
 
-epochs = 10
+epochs = 30
 learning_rate = 0.01
 
 # ------------------
@@ -82,8 +82,10 @@ metric_objects = get_classification_metrics()
 model = MnistClassifier()
 
 for epoch in range(start_epoch, epochs):
+    
     go_train(train_ds, model, loss_object, optimizer, metric_objects)
-    go_validation(validation_ds, model, loss_object, metric_objects)
+    go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
+    
     go_test(test_ds, model, loss_object, metric_objects, path_dict)
 
     training_reporter(epoch, losses_accs, 
