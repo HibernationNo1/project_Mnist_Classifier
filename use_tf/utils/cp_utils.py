@@ -4,29 +4,27 @@ import matplotlib.pyplot as plt
 
 # ---------- losses_accs.npz 저장 함수 ----------
 def save_losses_model(epoch, model, losses_accs, path_dict):
-    save_path = os.path.join(path_dict['model'], 'epoch' + str(epoch))
+    save_path = os.path.join(path_dict['model_path'], 'epoch_' + str(epoch))
     # 저장할 경로
     os.makedirs(save_path, exist_ok=True)
     # model 경로에 epoch_0, epoch_1, .. 이런 식으로 directory를 만들게 된다.
     model.save(save_path)
     # 이제까지 학습된 model 저장
     
-    np.savez_compressed(os.path.join(path_dict['cp_path'], 'losses_accs'),
+    np.savez_compressed(os.path.join(save_path, 'losses_accs'),
                         train_losses = losses_accs['train_losses'], 
                         train_accs = losses_accs['train_accs'],
                         validation_losses = losses_accs['validation_losses'],
                         validation_accs = losses_accs['validation_accs'])
     # np.savez_compressed(파일 경로, 함수) : 압축된 .npz 형식으로 여러 배열을 단일 파일에 저장
 
-# losses_accs = np.load('경로/losses_accs.npz') 를 하면 해당 내용을 불러올 수 있다.
-# losses_accs['train_losses']
-
 
 # ---------- losses_accs_visualization.png 저장 함수 ----------
-def loss_acc_visualizer(losses_accs, path_dict):
-    losses_accs = np.load(path_dict['cp_path'] +'/losses_accs.npz')
+def loss_acc_visualizer(epoch, losses_accs, path_dict):
+    load_path = os.path.join(path_dict['model_path'], 'epoch_' + str(epoch))
+    losses_accs = np.load(load_path +'/losses_accs.npz')
     # file 정보 불러오기
-    # file location = project directory/model_name/losses_accs.npz
+
     fig, ax_loss = plt.subplots(figsize = (21, 9))
     ax2 = ax_loss.twinx()
 
@@ -45,11 +43,10 @@ def loss_acc_visualizer(losses_accs, path_dict):
             linestyle = ':', linewidth = 2, label = 'Validation Accuracy')
     # train과 validation의 accs 비교 visualization
 
-    # 이 외 tick, spine, grid 같은건 알아서 설정
+
 
     plt.savefig(path_dict['cp_path'] + '/losses_accs_visualization.png')
     # figure 저장
-    # file save location = project directory/model_name/losses_accs_visualization.png
     # 같은 이름의 file이 이미 존재하면 덮어쓰기
 
     plt.close()

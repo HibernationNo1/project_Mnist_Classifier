@@ -1,5 +1,6 @@
 import tensorflow as tf
 import tensorflow_datasets as tfds
+from tensorflow.keras.utils import to_categorical
 
 # data set을 preprocessing하는 함수를 모아놓는 file
 
@@ -21,11 +22,18 @@ def load_processing_mnist(train_ratio, train_batch_size, test_batch_size):
     remaining_ds = train_validation_ds.skip(n_train) # train_validation_ds에서 (전체 - n_train 개수)만큼 반환
     validation_ds = remaining_ds.take(n_validation)
 
+    import sys
+    print(train_ds)
+    sys.exit()
+
     def normalization(images, labels):
-        image = tf.cast(images, tf.float32)/255.
-        return [images, labels]
+        images = tf.cast(images, tf.float32)/255.
+        oh_labels = to_categorical(y = labels)
+        
+        return [images, oh_labels]
 
     train_ds = train_ds.shuffle(1000).map(normalization).batch(train_batch_size)
+    
     # ndarray.batch(batch_size) : ndarray를 batch_size만큼씩 잘라서 반환
     # train_ds를 1000개씩 섞고, normalization을 진행한 뒤에, batch_size만큼씩 잘라서 반환
     # data set에 images, labels이란 object가 담겨져 있어 map(normalization) 가능
@@ -50,7 +58,7 @@ def load_processing_cifar10(train_ratio, train_batch_size, test_batch_size):
     validation_ds = remaining_ds.take(n_validation)
 
     def normalization(images, labels):
-        image = tf.cast(images, tf.float32)/255.
+        images = tf.cast(images, tf.float32)/255.
         return [images, labels]
 
     train_ds = train_ds.shuffle(1000).map(normalization).batch(train_batch_size)

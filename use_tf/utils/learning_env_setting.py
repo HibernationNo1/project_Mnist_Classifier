@@ -3,7 +3,7 @@ import shutil
 import numpy as np
 import tensorflow as tf
 
-from tensorflow.keras.metrics import Mean, SparseCategoricalAccuracy
+from tensorflow.keras.metrics import Mean, CategoricalAccuracy
 
 # CONTINUE_LEARNING = True      training이 진행되다 의도치 않게 멈춰서 
 #                               지난 Model의 training을 이어서 진행할 때
@@ -13,8 +13,9 @@ from tensorflow.keras.metrics import Mean, SparseCategoricalAccuracy
 # ---------project에 관한 file이나 directory를 생성하는 함수---------
 def dir_setting(dir_name, CONTINUE_LEARNING):
     cp_path = os.path.join(os.getcwd() , dir_name)
-    # 현재 경로에서 새 directory 경로 생성
-    # os.getcwd() 의 return이 상위 directory라서 path 추가함
+    # 현재 path == main.py 가 있는 directory
+    # 현재 path에서 새 directory path 생성
+
     model_path = os.path.join(cp_path, 'model')
     # cp_path 경로 안에 새롭게 생성할 directory
     
@@ -28,7 +29,7 @@ def dir_setting(dir_name, CONTINUE_LEARNING):
         os.makedirs(model_path, exist_ok=True)
     
     path_dict = {'cp_path' :cp_path, 
-                'model': model_path}
+                'model_path': model_path}
     return path_dict
 
 
@@ -36,14 +37,14 @@ def dir_setting(dir_name, CONTINUE_LEARNING):
 # ---------train, validation, test 각각의 loss와 accuracy를 담은 dict생성 함수---------
 def get_classification_metrics():
     train_loss = Mean()                     # training에 사용할 loss function
-    train_acc = SparseCategoricalAccuracy() # accuracy에 사용할 function
+    train_acc = CategoricalAccuracy() # accuracy에 사용할 function
     # function_name1 = function1()
 
     validation_loss = Mean()                # validation에 사용할 loss function
-    validation_acc = SparseCategoricalAccuracy()
+    validation_acc = CategoricalAccuracy()
 
     test_loss = Mean()                # test에 사용할 loss function
-    test_acc = SparseCategoricalAccuracy()
+    test_acc = CategoricalAccuracy()
 
 
     metric_objects = dict()
@@ -81,12 +82,11 @@ def continue_setting(CONTINUE_LEARNING, path_dict, model):
         model_path = path_dict['model_path'] + '/epoch_' + str(last_epoch)
         # 마지막 epoch의 경로를 model_path에 저장
         model = tf.keras.models.load_model(model_path)
-        # 경로에 있는 model을 return한다.
-
-
-        losses_accs_path = path_dict['train1']
+        # 경로에 있는 model을 load한다.
+        
+        losses_accs_path = model_path
         losses_accs_np = np.load(losses_accs_path +'/losses_accs.npz')
-        # project construct 파일의 구조를 보면 어떤 경로의 data를 가져왔는지 이해 될거임
+
         losses_accs = dict()
         for k, v in losses_accs_np.items():
             losses_accs[k] = list(v)

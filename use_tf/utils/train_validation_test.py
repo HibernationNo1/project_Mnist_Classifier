@@ -10,7 +10,7 @@ def go_train(train_ds, model, loss_object, optimizer, metric_objects):
         # backward propagation에서 계산에 필요한 값을 저장하기 위해 GradientTape 사용
             predictions = model(images)
             loss = loss_object(labels, predictions)
-            # SCCE 로 loss를 계산
+            # CCE 로 loss를 계산
            
 
         gradients = tape.gradient(loss, model.trainable_variables)
@@ -22,7 +22,7 @@ def go_train(train_ds, model, loss_object, optimizer, metric_objects):
         # train_loss 안에는 Mean() 이라는 함수가 들어있다. 
         # 즉, Mean(loss) 가 동작하는 code임. cost를 계산.
         metric_objects['train_acc'](labels, predictions)
-        # SparseCategoricalAccuracy(labels, predictions)
+        # CategoricalAccuracy(labels, predictions)
         
 
 # ---------- validation data로 validation하는 함수 -----------
@@ -39,6 +39,7 @@ def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
 
         predictions_one_hot = tf.argmax(predictions, axis = 1)
         con_mat += tf.math.confusion_matrix(labels, predictions_one_hot)
+    return con_mat
     
         
         
