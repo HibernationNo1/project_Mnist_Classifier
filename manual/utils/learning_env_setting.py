@@ -98,8 +98,8 @@ def continue_setting(CONTINUE_LEARNING, path_dict, model):
     else:
         model = model
         start_spoch = 0
-        losses_acc = {'train_losses': [], 'train_accs': [],
+        losses_accs = {'train_losses': [], 'train_accs': [],
                         'validation_losses': [], 'validation_accs': []}
         # 빈 dict를 만들어준다.
 
-    return model, losses_accs, start_epoch
+    return model, losses_accs, start_spoch

@@ -24,6 +24,8 @@ class MnistClassifier(Model):
         self.classifier.add(Dense(units = 64, activation = 'relu'))
         # (None, 64) 
         self.classifier.add(Dense(units = 10, activation = 'softmax'))
+        # (None, 10) 
+
 
     def call(self, x):
         x = self.fe(x)

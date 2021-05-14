@@ -38,6 +38,7 @@ def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
         metric_objects['validation_acc'](labels, predictions)
 
         predictions_one_hot = tf.argmax(predictions, axis = 1)
+
         con_mat += tf.math.confusion_matrix(labels, predictions_one_hot)
     return con_mat
     
@@ -45,9 +46,10 @@ def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
         
 
 # ----------test data로 test해보고 그 결과를 저장하는 함수 -----------
-import sys
+
 @tf.function
 def go_test(test_ds, model, loss_object, metric_objects, path_dict):
+
     for images, labels in test_ds:
         images = tf.cast(images, dtype = tf.float32)
         predictions = model(images)

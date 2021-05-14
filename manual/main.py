@@ -36,6 +36,7 @@ train_ds, validation_ds, test_ds = load_processing_mnist(train_ratio,
                                                         train_batch_size, 
                                                         test_batch_size)
 
+
 losses_accs = {'train_losses': [], 'train_accs': [], 
                 'validation_losses': [], 'validation_accs': []}
 con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
