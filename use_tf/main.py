@@ -21,55 +21,65 @@ CONTINUE_LEARNING = False
 dir_name = 'train1'
 n_class = 10 
 
-start_epoch = 0
-
 train_ratio = 0.8
 train_batch_size, test_batch_size = 32, 128
 
-epochs = 5
+epochs = 2
 learning_rate = 0.01
 
 # ------------------
 
 path_dict = dir_setting(dir_name, CONTINUE_LEARNING)
-
 train_ds, validation_ds, test_ds = load_processing_mnist(train_ratio, 
                                                         train_batch_size, 
                                                         test_batch_size)
-
-
-
-con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
-# confusion_matrix
-
-loss_object = CategoricalCrossentropy()
-optimizer = SGD(learning_rate = learning_rate)
-
 metric_objects = get_classification_metrics()
 
 model = MnistClassifier()
 
 model, losses_accs, start_epoch = continue_setting(CONTINUE_LEARNING, path_dict, model)
 
+loss_object = CategoricalCrossentropy()
+optimizer = SGD(learning_rate = learning_rate)
+
+
+con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
 # ---model implementation---
 for epoch in range(start_epoch, epochs):
-    
+    print("1")
+    print(type(metric_objects['train_loss'].result()))
     go_train(train_ds, model, loss_object, optimizer, metric_objects)
+    print("3")
+    print(type(metric_objects['train_loss'].result()))
+
+    
     if epoch == epochs-1:
         con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
+        confusion_matrix_visualizer(con_mat, n_class, path_dict)
     else:
         _ = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
-    
+
+    print("5")
+    print(type(metric_objects['train_loss'].result()))
     go_test(test_ds, model, loss_object, metric_objects, path_dict)
+    print("7")
+    print(type(metric_objects['train_loss'].result()))
 
     training_reporter(epoch, losses_accs, 
                       metric_objects, dir_name)
+    print("9")
+    print(type(metric_objects['train_loss'].result()))
     save_losses_model(epoch, model, losses_accs, path_dict)
     
     loss_acc_visualizer(epoch, losses_accs, path_dict)
 
     resetter(metric_objects)
+    print("10")
+    print(type(metric_objects['train_loss'].result()))    
+    import sys
+    print("!!!!")
+    sys.exit()
 
-confusion_matrix_visualizer(con_mat, n_class, path_dict)
+
        
 
