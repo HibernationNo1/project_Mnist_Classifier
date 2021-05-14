@@ -46,12 +46,7 @@ optimizer = SGD(learning_rate = learning_rate)
 con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
 # ---model implementation---
 for epoch in range(start_epoch, epochs):
-    print("1")
-    print(type(metric_objects['train_loss'].result()))
     go_train(train_ds, model, loss_object, optimizer, metric_objects)
-    print("3")
-    print(type(metric_objects['train_loss'].result()))
-
     
     if epoch == epochs-1:
         con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
@@ -59,26 +54,17 @@ for epoch in range(start_epoch, epochs):
     else:
         _ = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
 
-    print("5")
-    print(type(metric_objects['train_loss'].result()))
     go_test(test_ds, model, loss_object, metric_objects, path_dict)
-    print("7")
-    print(type(metric_objects['train_loss'].result()))
 
     training_reporter(epoch, losses_accs, 
                       metric_objects, dir_name)
-    print("9")
-    print(type(metric_objects['train_loss'].result()))
+
     save_losses_model(epoch, model, losses_accs, path_dict)
     
     loss_acc_visualizer(epoch, losses_accs, path_dict)
 
     resetter(metric_objects)
-    print("10")
-    print(type(metric_objects['train_loss'].result()))    
-    import sys
-    print("!!!!")
-    sys.exit()
+
 
 
        
