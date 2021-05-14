@@ -3,9 +3,9 @@ import tensorflow as tf
 # ---------- training data로 learning하는 함수 -----------
 @tf.function
 def go_train(train_ds, model, loss_object, optimizer, metric_objects):
+
     for images, labels in train_ds:
         # forward propagation
-        images = tf.cast(images, dtype = tf.float32)
         with tf.GradientTape() as tape:
         # backward propagation에서 계산에 필요한 값을 저장하기 위해 GradientTape 사용
             predictions = model(images)
@@ -28,28 +28,32 @@ def go_train(train_ds, model, loss_object, optimizer, metric_objects):
 # ---------- validation data로 validation하는 함수 -----------
 @tf.function
 def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
+
     # optimizer 안할거라 Tape 불필요
     for images, labels in validation_ds:
-        images = tf.cast(images, dtype = tf.float32)
         predictions = model(images)
         loss = loss_object(labels, predictions)
 
         metric_objects['validation_loss'](loss)
         metric_objects['validation_acc'](labels, predictions)
 
-        predictions_one_hot = tf.argmax(predictions, axis = 1)
-        con_mat += tf.math.confusion_matrix(labels, predictions_one_hot)
+        predictions_argmax = tf.argmax(predictions, axis = 1)
+        labels_argmax = tf.argmax(labels, axis = 1)
+
+        con_mat += tf.math.confusion_matrix(labels_argmax, predictions_argmax)
+
+
     return con_mat
     
         
         
 
 # ----------test data로 test해보고 그 결과를 저장하는 함수 -----------
-import sys
+
 @tf.function
 def go_test(test_ds, model, loss_object, metric_objects, path_dict):
+
     for images, labels in test_ds:
-        images = tf.cast(images, dtype = tf.float32)
         predictions = model(images)
         loss = loss_object(labels, predictions)
 
