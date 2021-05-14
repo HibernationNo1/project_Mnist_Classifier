@@ -96,8 +96,8 @@ def continue_setting(CONTINUE_LEARNING, path_dict, model):
         # 다시 시작할 training 시작점 설정
     else:
         model = model
-        start_spoch = 0
-        losses_acc = {'train_losses': [], 'train_accs': [],
+        start_epoch = 0
+        losses_accs = {'train_losses': [], 'train_accs': [],
                         'validation_losses': [], 'validation_accs': []}
         # 빈 dict를 만들어준다.
 
