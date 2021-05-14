@@ -22,14 +22,10 @@ def load_processing_mnist(train_ratio, train_batch_size, test_batch_size):
     remaining_ds = train_validation_ds.skip(n_train) # train_validation_ds에서 (전체 - n_train 개수)만큼 반환
     validation_ds = remaining_ds.take(n_validation)
 
-    import sys
-    print(train_ds)
-    sys.exit()
-
     def normalization(images, labels):
         images = tf.cast(images, tf.float32)/255.
-        oh_labels = to_categorical(y = labels)
-        
+
+        oh_labels = tf.one_hot(labels, 10)
         return [images, oh_labels]
 
     train_ds = train_ds.shuffle(1000).map(normalization).batch(train_batch_size)
