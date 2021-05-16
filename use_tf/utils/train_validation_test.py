@@ -19,6 +19,7 @@ def go_train(train_ds, model, loss_object, optimizer, metric_objects):
         # gradient descent method를 통해 optimizer 
 
         metric_objects['train_loss'](loss)
+       
         # train_loss 안에는 Mean() 이라는 함수가 들어있다. 
         # 즉, Mean(loss) 가 동작하는 code임. cost를 계산.
         metric_objects['train_acc'](labels, predictions)
@@ -26,7 +27,7 @@ def go_train(train_ds, model, loss_object, optimizer, metric_objects):
         
 
 # ---------- validation data로 validation하는 함수 -----------
-@tf.function
+
 def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
 
     # optimizer 안할거라 Tape 불필요
@@ -50,7 +51,7 @@ def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
 
 # ----------test data로 test해보고 그 결과를 저장하는 함수 -----------
 
-@tf.function
+
 def go_test(test_ds, model, loss_object, metric_objects, path_dict):
 
     for images, labels in test_ds:
