@@ -1,6 +1,5 @@
 import tensorflow as tf
 import tensorflow_datasets as tfds
-from tensorflow.keras.utils import to_categorical
 
 # data set을 preprocessing하는 함수를 모아놓는 file
 
