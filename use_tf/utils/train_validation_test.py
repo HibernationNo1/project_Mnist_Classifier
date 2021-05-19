@@ -9,9 +9,9 @@ def go_train(train_ds, model, loss_object, optimizer, metric_objects):
         with tf.GradientTape() as tape:
         # backward propagation에서 계산에 필요한 값을 저장하기 위해 GradientTape 사용
             predictions = model(images)
+
             loss = loss_object(labels, predictions)
             # CCE 로 loss를 계산
-           
 
         gradients = tape.gradient(loss, model.trainable_variables)
         # 기울기 계산

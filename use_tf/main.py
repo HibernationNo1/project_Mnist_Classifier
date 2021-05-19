@@ -1,5 +1,4 @@
 import os
-from numpy.lib.twodim_base import tri
 import tensorflow as tf
 
 from model_class.MnistClassifier import MnistClassifier
@@ -47,7 +46,7 @@ con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
 # ---model implementation---
 for epoch in range(start_epoch, epochs):
     go_train(train_ds, model, loss_object, optimizer, metric_objects)
-    
+     
     if epoch == epochs-1:
         con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
         confusion_matrix_visualizer(con_mat, n_class, path_dict)
@@ -66,6 +65,6 @@ for epoch in range(start_epoch, epochs):
     resetter(metric_objects)
 
 
-
+print("test")
        
 
