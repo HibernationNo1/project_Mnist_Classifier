@@ -1,2 +1,5 @@
 tmp1.py
 tmp2.py
+*.pyc
+*.pnz
+menual-function
