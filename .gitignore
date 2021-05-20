@@ -1,4 +1,8 @@
 tmp1.py
 tmp2.py
 *.pyc
-*.pnz
+*.npz
+*.index
+*.pb
+model/
+*.txt
