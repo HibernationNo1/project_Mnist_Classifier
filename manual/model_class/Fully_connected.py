@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-from affineFunction import Layer
+from AffineFunction import Layer
 from tensorflow.feras.layers import Activation
 
 class Dense:
