@@ -2,6 +2,9 @@ tmp1.py
 tmp2.py
 *.pyc
 *.pnz
+<<<<<<< HEAD
 menual-function
 
 
+=======
+>>>>>>> end_test
