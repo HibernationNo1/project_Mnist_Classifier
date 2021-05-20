@@ -1,11 +1,5 @@
 import numpy as np
 
-class Flatten:
-    def __init__(self, x):
-        self._re = x.shape[1]*x.shape[2]*x.shape[3]
-        self._x = x.reshape([-1, self._re])
-        return x
-
 class AffineFunction:
     def __init__(self, feature_dim, units):
         self._feature_dim = feature_dim
@@ -14,7 +8,7 @@ class AffineFunction:
         self._z1_list = [None]*(self._feature_dim + 1)
         self._z2_list = self._z1_list.copy()
 
-        
+
 
         self.node_imp()
         self.random_theta_initialization()
@@ -53,8 +47,17 @@ class AffineFunction:
         return self._z2_list[-1]     
 
 
+class Layer:
+    def __init__(self, feature_dim, units):
+        self.feature_dim = feature_dim
+        self.units = units
+        self.persep_layer = None
     def layer(self, X):
-        for persep_idx in range(self.units):
-            self.persep_list[persep_idx] = self.perseptron(X)
-        return self.persep_list
+        for idx in range(self.units):
+            self.AffineFunction = AffineFunction(self.feature_dim, self.units)
+            if idx == 0:
+                self.persep_layer = self.AffineFunction.perseptron(X)
+            else: 
+                self.persep_layer = np.hstack([self.persep_layer, self.AffineFunction.perseptron(X)])
+        return self.persep_layer
             
