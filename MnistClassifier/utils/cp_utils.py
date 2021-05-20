@@ -45,7 +45,7 @@ def loss_acc_visualizer(epoch, losses_accs, path_dict):
     
     ax_loss.legend(bbox_to_anchor = (1, 0.5), loc = 'upper right', 
                 fontsize = 20, frameon = False)
-    ax2.legend(bbox_to_anchor = (1, 0.5), loc = 'upper right', 
+    ax2.legend(bbox_to_anchor = (1, 0.5), loc = 'lower right', 
                 fontsize = 20, frameon = False)
 
     ax_loss_yticks = ax_loss.get_yticks()
