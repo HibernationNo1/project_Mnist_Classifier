@@ -16,14 +16,14 @@ from utils.train_validation_test import go_train, go_validation, go_test
 os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
 # --- Hyperparameter Setting ---
-CONTINUE_LEARNING = False
+CONTINUE_LEARNING = True
 dir_name = 'train1'
 n_class = 10 
 
 train_ratio = 0.8
 train_batch_size, test_batch_size = 32, 128
 
-epochs = 30
+epochs = 50
 learning_rate = 0.01
 
 # ------------------
@@ -50,7 +50,7 @@ for epoch in range(start_epoch, epochs):
     if epoch == epochs-1:
         con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
         confusion_matrix_visualizer(con_mat, n_class, path_dict)
-        loss_acc_visualizer(epoch, losses_accs, path_dict)
+        
     else:
         _ = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
 
@@ -60,6 +60,8 @@ for epoch in range(start_epoch, epochs):
                       metric_objects, dir_name)
 
     save_losses_model(epoch, model, losses_accs, path_dict)
+    if epoch == epochs-1:
+        loss_acc_visualizer(epoch, losses_accs, path_dict)
 
     resetter(metric_objects)
 
