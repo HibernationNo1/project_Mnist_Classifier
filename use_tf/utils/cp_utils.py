@@ -42,7 +42,47 @@ def loss_acc_visualizer(epoch, losses_accs, path_dict):
     ax2.plot(epoch_range, losses_accs['validation_accs'], color = 'tab:orange', 
             linestyle = ':', linewidth = 2, label = 'Validation Accuracy')
     # train과 validation의 accs 비교 visualization
+    
+    ax_loss.legend(bbox_to_anchor = (1, 0.5), loc = 'upper right', 
+                fontsize = 20, frameon = False)
+    ax2.legend(bbox_to_anchor = (1, 0.5), loc = 'upper right', 
+                fontsize = 20, frameon = False)
 
+    ax_loss_yticks = ax_loss.get_yticks()
+    ax2_yticks = ax2.get_yticks()
+
+    ax_loss_yticks_M = ax_loss_yticks[-1]
+
+    ax_loss_yticks = np.linspace(0, ax_loss_yticks_M, 7)
+    ax2_yticks = np.arange(70, 101, 5)
+    ax2_yticks_minor = np.arange(70, 101, 1)
+
+    ax_loss.set_yticks(ax_loss_yticks)
+    ax_loss.set_ylim([0, ax_loss_yticks_M])
+    ax_loss.set_yticklabels(np.around(ax_loss_yticks, 2))
+    ax2.set_ylim([70, 100])
+    ax2.set_yticks(ax2_yticks)
+    ax2.set_yticks(ax2_yticks_minor, minor = True)
+
+    epoch_ticks = np.linspace(1, len(losses_accs['train_losses']), 10).astype(np.int)
+
+    ax_loss.tick_params(labelsize = 20, color = 'tab:blue')
+    ax2.tick_params(labelsize = 20, color = 'tab:orange' )
+    ax2.tick_params(which = 'minor', right = False)
+
+    ax_loss.set_xticks(epoch_ticks)
+    ax2.set_xticks(epoch_ticks)
+    ax_loss.set_xticklabels(epoch_ticks, color = 'k')
+
+    ax2.grid(axis ='y')
+    ax2.grid(which = 'minor', linestyle = ':')
+
+    ax_loss.set_xlim([1, len(losses_accs['train_losses'])])
+    ax2.set_xlim([1, len(losses_accs['train_losses'])])
+
+    ax_loss.set_ylabel('Cross Entropy Loss', fontsize = 30, color = 'tab:blue')
+    ax2.set_ylabel('Accuracy', fontsize = 30, color = 'tab:orange')
+    fig.tight_layout(pad = 5)
 
 
     plt.savefig(path_dict['cp_path'] + '/losses_accs_visualization.png')
