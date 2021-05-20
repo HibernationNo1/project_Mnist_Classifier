@@ -16,14 +16,14 @@ from utils.train_validation_test import go_train, go_validation, go_test
 os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
 # --- Hyperparameter Setting ---
-CONTINUE_LEARNING = False
+CONTINUE_LEARNING = True
 dir_name = 'train1'
 n_class = 10 
 
 train_ratio = 0.8
 train_batch_size, test_batch_size = 32, 128
 
-epochs = 30
+epochs = 50
 learning_rate = 0.01
 
 # ------------------
