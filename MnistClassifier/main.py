@@ -23,7 +23,7 @@ n_class = 10
 train_ratio = 0.8
 train_batch_size, test_batch_size = 32, 128
 
-epochs = 2
+epochs = 30
 learning_rate = 0.01
 
 # ------------------
