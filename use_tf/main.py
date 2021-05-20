@@ -65,4 +65,7 @@ for epoch in range(start_epoch, epochs):
     resetter(metric_objects)
 
 print('test5')
+<<<<<<< HEAD
 # test5.1
+=======
+>>>>>>> test5.1
