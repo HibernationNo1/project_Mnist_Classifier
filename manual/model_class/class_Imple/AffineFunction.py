@@ -8,8 +8,6 @@ class AffineFunction:
         self._z1_list = [None]*(self._feature_dim + 1)
         self._z2_list = self._z1_list.copy()
 
-
-
         self.node_imp()
         self.random_theta_initialization()
 
