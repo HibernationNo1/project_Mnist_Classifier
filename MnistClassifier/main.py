@@ -50,7 +50,7 @@ for epoch in range(start_epoch, epochs):
     if epoch == epochs-1:
         con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
         confusion_matrix_visualizer(con_mat, n_class, path_dict)
-        loss_acc_visualizer(epoch, losses_accs, path_dict)
+        
     else:
         _ = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
 
@@ -60,6 +60,8 @@ for epoch in range(start_epoch, epochs):
                       metric_objects, dir_name)
 
     save_losses_model(epoch, model, losses_accs, path_dict)
+    if epoch == epochs-1:
+        loss_acc_visualizer(epoch, losses_accs, path_dict)
 
     resetter(metric_objects)
 
