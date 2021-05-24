@@ -52,7 +52,7 @@ def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
 # ----------test data로 test해보고 그 결과를 저장하는 함수 -----------
 
 
-def go_test(test_ds, model, loss_object, metric_objects, path_dict):
+def go_test(test_ds, model, loss_object, metric_objects, path_dict, last_epoch):
 
     for images, labels in test_ds:
         predictions = model(images)
@@ -62,7 +62,7 @@ def go_test(test_ds, model, loss_object, metric_objects, path_dict):
         metric_objects['test_acc'](labels, predictions)
     
     loss, acc = metric_objects['test_loss'].result(), metric_objects['test_acc'].result()
-
-    with open(path_dict['cp_path'] + '/test_result.txt', 'w') as f:
+    model_path = path_dict['model_path'] + '/epoch_' + str(last_epoch)
+    with open(model_path + '/test_result.txt', 'w') as f:
         # 경로 위에 있는 file 열어주고 (경로 위에 file이 없다면 새로 생성)
         f.write(f"test_loss: {loss} \ntest_acc: {acc*100}")
