@@ -54,7 +54,7 @@ for epoch in range(start_epoch, epochs):
     else:
         _ = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
 
-    go_test(test_ds, model, loss_object, metric_objects, path_dict)
+    go_test(test_ds, model, loss_object, metric_objects, path_dict, epoch)
 
     training_reporter(epoch, losses_accs, 
                       metric_objects, dir_name)
