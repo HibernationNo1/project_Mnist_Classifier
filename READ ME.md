@@ -4,11 +4,18 @@
 
 This project is Classifier Implementation as Convolution Neural Network model.
 
-I train the network on the training data sets from Tensorflow-Mnist. (the Mnist dataset have 10 class) And checked validation accuracy is 98.65%  after 40 epochs.
+I implementation code run training, validation, test in eopochs for check the variation of loss, accuracy values
+
+Train the network on the training data sets from Tensorflow-Mnist. (the Mnist dataset have 10 class) And checked validation accuracy is 98.65%  after 40 epochs.
 
 Also I made 5 utility Method file. Those method help you about save model, check matrixes for every epochs, and show result by plot after learning. 
 
 
+
+#### The CNN Classifier System
+
+1. pre-processing image dataset by nomalization
+2. runs a single convolutional network on the image
 
 [read here]() if you want to know details of project pipeline 
 
