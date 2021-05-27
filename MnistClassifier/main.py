@@ -1,7 +1,7 @@
 import os
 import tensorflow as tf
 
-from model_class.Model_Classifier import MnistClassifier
+from model_class.model import MnistClassifier
 
 from tensorflow.keras.losses import CategoricalCrossentropy
 from tensorflow.keras.optimizers import SGD
