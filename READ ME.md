@@ -1,23 +1,30 @@
 # READ ME
 
-## CNN Classifier with Mnist
+## Abstract
 
-This project is Classifier Implementation as Convolution Neural Network model.
+I Implement Classifier Model  as Convolution Neural Network with Minst from tensorflow dataset and some utility code.
 
-I implementation code run training, validation, test in eopochs for check the variation of loss, accuracy values
+This project is intended for experience about Implement model and utility code like thesis construction 
 
-Train the network on the training data sets from Tensorflow-Mnist. (the Mnist dataset have 10 class) And checked validation accuracy is 98.65%  after 40 epochs.
+It shows the changing of loss and accuracy value for every epoch because the code constructed training, validation, test be implemented in same `for loop`.  And the training, validation, test data save in every epoch as a file.
 
-Also I made 5 utility Method file. Those method help you about save model, check matrixes for every epochs, and show result by plot after learning. 
+After finish code task, we can check 'confusion matrix'  for last epoch and a plot about changing of loss, accuracy value for full epoch as .png file. 
+
+I also implemented it can continue learning in case after the training stop unintentionally during learning 
 
 
 
-#### The CNN Classifier System
 
-1. pre-processing image dataset by nomalization
-2. runs a single convolutional network on the image
 
-[read here]() if you want to know details of project pipeline 
+
+
+## How start?
+
+```
+MnistClassifier\main.py
+```
+
+
 
 
 
@@ -114,12 +121,6 @@ Also I made 5 utility Method file. Those method help you about save model, check
   confusion_matrix 값으로 matshow plot을 표현 후 .png file로 save
 
   
-
-
-
-## Getting Started
-
-commend로 학습 model 저장 위치 결정 후 main.py에서 실행
 
 
 
