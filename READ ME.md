@@ -4,7 +4,7 @@
 
 I Implement Classifier Model  as Convolution Neural Network with Minst from tensorflow dataset and some utility code.
 
-This project is intended for experience about Implement model and utility code like thesis construction 
+This project is intended for experience about Implement model and utility code like code construction of common thesis  
 
 It shows the changing of loss and accuracy value for every epoch because the code constructed training, validation, test be implemented in same `for loop`.  And the training, validation, test data save in every epoch as a file.
 
