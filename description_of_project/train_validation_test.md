@@ -1,6 +1,6 @@
 # train_validation_test
 
-This file have three mothod for train, validation, test with dataset
+This file have three method for train, validation, test with dataset
 
 
 
