@@ -27,7 +27,7 @@ def go_train(train_ds, model, loss_object, optimizer, metric_objects):
         
 
 # ---------- validation data로 validation하는 함수 -----------
-
+@tf.function
 def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
 
     # optimizer 안할거라 Tape 불필요
