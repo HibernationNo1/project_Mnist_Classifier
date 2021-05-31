@@ -27,7 +27,7 @@ def go_train(train_ds, model, loss_object, optimizer, metric_objects):
         
 
 # ---------- validation data로 validation하는 함수 -----------
-
+@tf.function
 def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
 
     # optimizer 안할거라 Tape 불필요
@@ -52,7 +52,7 @@ def go_validation(validation_ds, model, loss_object, metric_objects, con_mat):
 # ----------test data로 test해보고 그 결과를 저장하는 함수 -----------
 
 
-def go_test(test_ds, model, loss_object, metric_objects, path_dict, last_epoch):
+def go_test(test_ds, model, loss_object, metric_objects, path_dict, epoch):
 
     for images, labels in test_ds:
         predictions = model(images)
@@ -61,8 +61,14 @@ def go_test(test_ds, model, loss_object, metric_objects, path_dict, last_epoch):
         metric_objects['test_loss'](loss)
         metric_objects['test_acc'](labels, predictions)
     
-    loss, acc = metric_objects['test_loss'].result(), metric_objects['test_acc'].result()
-    model_path = path_dict['model_path'] + '/epoch_' + str(last_epoch)
-    with open(model_path + '/test_result.txt', 'w') as f:
-        # 경로 위에 있는 file 열어주고 (경로 위에 file이 없다면 새로 생성)
-        f.write(f"test_loss: {loss} \ntest_acc: {acc*100}")
+    loss, acc = metric_objects['test_loss'].result().numpy(), metric_objects['test_acc'].result().numpy()
+    model_path = path_dict['cp_path']
+    if epoch == 0:
+        with open(model_path + '/test_result.txt', 'w') as f:
+            # 경로 위에 있는 file 열어주고 (경로 위에 file이 없다면 새로 생성)
+            f.write(f"    epoch: {epoch} \n")
+            f.write(f"test_loss: {loss} \ntest_acc: {acc*100}")
+    else :
+        with open(model_path + '/test_result.txt', 'a') as f:
+            f.write(f"\n\n    epoch: {epoch} \n")
+            f.write(f"test_loss: {loss}, \ntest_acc: {acc*100}")

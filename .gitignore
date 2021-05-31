@@ -4,5 +4,6 @@ tmp2.py
 *.npz
 *.index
 *.pb
-model/
+*.png
 *.txt
+train1/

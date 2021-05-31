@@ -85,14 +85,15 @@ def loss_acc_visualizer(epoch, losses_accs, path_dict):
     fig.tight_layout(pad = 5)
 
 
-    plt.savefig(path_dict['cp_path'] + '/losses_accs_visualization.png')
+    save_path = os.path.join(path_dict['model_path'], 'epoch_' + str(epoch))
+    plt.savefig(save_path + '/losses_accs_visualization.png')
     # figure 저장
     # 같은 이름의 file이 이미 존재하면 덮어쓰기
 
     plt.close()
     # close를 안하면 epoch이 돌 때마다 RAM이 점점 부족해짐. 이거 필수 
 
-def confusion_matrix_visualizer(con_mat, n_class, path_dict):
+def confusion_matrix_visualizer(con_mat, n_class, path_dict, epoch):
     fig, ax = plt.subplots(figsize = (14, 14))
     ax.matshow(con_mat, cmap = 'Reds')
     M = np.max(con_mat)
@@ -124,7 +125,8 @@ def confusion_matrix_visualizer(con_mat, n_class, path_dict):
     ax.set_xlabel('Predicted Label', fontsize = 30, color = 'royalblue')
 
     fig.tight_layout()
-    plt.savefig(path_dict['cp_path'] + '/confustion_matrix_visualization.png')
+    save_path = os.path.join(path_dict['model_path'], 'epoch_' + str(epoch))
+    plt.savefig(save_path + '/confustion_matrix_visualization.png')
     # figure 저장 
     # file save location = project directory/model_name/losses_accs_visualization.png
     # 같은 이름의 file이 이미 존재하면 덮어쓰기

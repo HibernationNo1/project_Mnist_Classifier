@@ -1,7 +1,7 @@
 import os
 import tensorflow as tf
 
-from model_class.Model_Classifier import MnistClassifier
+from model.model import MnistClassifier
 
 from tensorflow.keras.losses import CategoricalCrossentropy
 from tensorflow.keras.optimizers import SGD
@@ -16,14 +16,14 @@ from utils.train_validation_test import go_train, go_validation, go_test
 os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
 # --- Hyperparameter Setting ---
-CONTINUE_LEARNING = True
+CONTINUE_LEARNING = False
 dir_name = 'train1'
 n_class = 10 
 
 train_ratio = 0.8
 train_batch_size, test_batch_size = 32, 128
 
-epochs = 50
+epochs = 30
 learning_rate = 0.01
 
 # ------------------
@@ -42,17 +42,12 @@ loss_object = CategoricalCrossentropy()
 optimizer = SGD(learning_rate = learning_rate)
 
 
-con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
 # ---model implementation---
 for epoch in range(start_epoch, epochs):
+    con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
     go_train(train_ds, model, loss_object, optimizer, metric_objects)
      
-    if epoch == epochs-1:
-        con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
-        confusion_matrix_visualizer(con_mat, n_class, path_dict)
-        
-    else:
-        _ = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
+    con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
 
     go_test(test_ds, model, loss_object, metric_objects, path_dict, epoch)
 
@@ -60,8 +55,9 @@ for epoch in range(start_epoch, epochs):
                       metric_objects, dir_name)
 
     save_losses_model(epoch, model, losses_accs, path_dict)
-    if epoch == epochs-1:
-        loss_acc_visualizer(epoch, losses_accs, path_dict)
+    
+    confusion_matrix_visualizer(con_mat, n_class, path_dict, epoch)
+    loss_acc_visualizer(epoch, losses_accs, path_dict)
 
     resetter(metric_objects)
 
