@@ -42,17 +42,12 @@ loss_object = CategoricalCrossentropy()
 optimizer = SGD(learning_rate = learning_rate)
 
 
-con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
 # ---model implementation---
 for epoch in range(start_epoch, epochs):
+    con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
     go_train(train_ds, model, loss_object, optimizer, metric_objects)
      
-    if epoch == epochs-1:
-        con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
-        confusion_matrix_visualizer(con_mat, n_class, path_dict)
-        
-    else:
-        _ = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
+    con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
 
     go_test(test_ds, model, loss_object, metric_objects, path_dict, epoch)
 
@@ -60,8 +55,9 @@ for epoch in range(start_epoch, epochs):
                       metric_objects, dir_name)
 
     save_losses_model(epoch, model, losses_accs, path_dict)
-    if epoch == epochs-1:
-        loss_acc_visualizer(epoch, losses_accs, path_dict)
+    
+    confusion_matrix_visualizer(con_mat, n_class, path_dict, epoch)
+    loss_acc_visualizer(epoch, losses_accs, path_dict)
 
     resetter(metric_objects)
 
