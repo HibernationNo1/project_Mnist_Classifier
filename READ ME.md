@@ -50,7 +50,7 @@ MnistClassifier\main.py
 
 
 
-## Method Description
+## Method, Class Description
 
 #### 1. learning_env_setting.py
 
@@ -118,7 +118,24 @@ MnistClassifier\main.py
 
   draw the confusion_matrix plot and save as .png file
 
-  
+
+
+
+#### 6. model.py
+
+- **MnistClassifier**
+
+  make classifier using keras.model sub-classing,  Sequential API
+
+  in description file, I Implemented forward propagation of Conv2D and Danse layers
+
+
+
+description about method and class described in markdown file where in directory named 'project description (다시 번역할 것)
+
+
+
+
 
 ## version
 
