@@ -93,7 +93,7 @@ I Implemented Classifier Model built with Convolution Neural Network and some ut
 
 ## Conclusion
 
-I Implement Classifier Model with Mnist data of tensorflow_dataset. And train this network to 50 epoch for half an hour and achieve accuracy 98.55% on the Mnist validation data set.
+I Implement Classifier Model with Mnist data of tensorflow_dataset. And train this network to 50 epoch for half an hour and achieve accuracy 98.80% on the Mnist validation data set.
 
 I make this project for experience that Implement model and utility code like construction of common thesis code. There were many difficulties in the process, I solve those problems by using Stack overflow, Naver Knowledge IN and open kakao community.
 
@@ -103,13 +103,13 @@ I make this project for experience that Implement model and utility code like co
 
 
 
-![]()
+![](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/image/Confustion_matrix_visualization.png?raw=true)
 
 - loss and accuracy line plot on train and validation dataset for 0 to 50 epoch
 
-![]()
+![](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/image/Losses_accs_visualization.png?raw=true)
 
-test
+
 
 I describe about method and model in markdown file.  open the file or click the rink for details about method.
 
