@@ -99,6 +99,18 @@ I make this project for experience that Implement model and utility code like co
 
 
 
+- Confusion Matrix on validation dataset when 50 epoch 
+
+
+
+![](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/image/confustion_matrix_visualization.png?raw=true)
+
+- loss and accuracy line plot on train and validation dataset for 0 to 50  50 epoch
+
+![](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/image/losses_accs_visualization.png?raw=true)
+
+
+
 I describe about method and model in markdown file.  open the file for details about method.
 
 - learning env setting.md
