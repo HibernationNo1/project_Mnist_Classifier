@@ -111,15 +111,15 @@ I make this project for experience that Implement model and utility code like co
 
 
 
-I describe about method and model in markdown file.  open the file for details about method.
+I describe about method and model in markdown file.  open the file or click the rink for details about method.
 
-- learning env setting.md
-- dataset utils.md
-- train_validation_test.md
-- basic_utils.md
-- cp_utils.md
-- model.md
-- main.md
+- [learning env setting.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/learning%20env%20setting.md)
+- [dataset utils.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/dataset%20utils.md)
+- [train_validation_test.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/train_validation_test.md)
+- [basic_utils.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/basic_utils.md)
+- [cp_utils.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/cp_utils.md)
+- [model.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/Model.md)
+- [main.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/main.md)
 
 
 
