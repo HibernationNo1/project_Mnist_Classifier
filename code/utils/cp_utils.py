@@ -25,12 +25,12 @@ def loss_acc_visualizer(epoch, losses_accs, path_dict):
     ax_loss.plot(epoch_range, losses_accs['train_losses'], color = 'tab:blue', 
             linestyle = ':', linewidth = 2, label = 'Train Loss')
     ax_loss.plot(epoch_range, losses_accs['validation_losses'], color = 'tab:blue', 
-                linewidth = 2, label = 'Train Loss')
+                linewidth = 2, label = 'validation Loss')
 
     ax2.plot(epoch_range, losses_accs['train_accs'], color = 'tab:orange', 
             linestyle = ':', linewidth = 2, label = 'Train Accuracy')
     ax2.plot(epoch_range, losses_accs['validation_accs'], color = 'tab:orange', 
-            linestyle = ':', linewidth = 2, label = 'Validation Accuracy')
+            linewidth = 2, label = 'Validation Accuracy')
     
     ax_loss.legend(bbox_to_anchor = (1, 0.5), loc = 'upper right', 
                 fontsize = 20, frameon = False)
