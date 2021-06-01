@@ -1,3 +1,6 @@
+# main
+
+```python
 import os
 import tensorflow as tf
 
@@ -14,9 +17,12 @@ from utils.basic_utils import resetter, training_reporter
 from utils.train_validation_test import go_train, go_validation, go_test
 
 os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
+# for decrease GPU memory consumed by Tensorflow
 
 # --- Hyperparameter Setting ---
 CONTINUE_LEARNING = False
+# set 'CONTINUE_LEARNING = True' if training stopped unintentionally before.
+
 dir_name = 'train1'
 n_class = 10 
 
@@ -26,7 +32,7 @@ train_batch_size, test_batch_size = 32, 128
 epochs = 30
 learning_rate = 0.01
 
-# ------------------
+# ---call setting method---
 
 path_dict = dir_setting(dir_name, CONTINUE_LEARNING)
 train_ds, validation_ds, test_ds = load_processing_mnist(train_ratio, 
@@ -45,6 +51,8 @@ optimizer = SGD(learning_rate = learning_rate)
 # ---model implementation---
 for epoch in range(start_epoch, epochs):
     con_mat = tf.zeros(shape = (n_class, n_class), dtype = tf.int32)
+    # for confusion_matrix_visualizer
+    
     go_train(train_ds, model, loss_object, optimizer, metric_objects)
      
     con_mat = go_validation(validation_ds, model, loss_object, metric_objects, con_mat)
@@ -60,4 +68,7 @@ for epoch in range(start_epoch, epochs):
     loss_acc_visualizer(epoch, losses_accs, path_dict)
 
     resetter(metric_objects)
+```
+
+
 

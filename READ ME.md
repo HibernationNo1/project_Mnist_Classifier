@@ -1,50 +1,28 @@
 # READ ME
 
-## CNN Classifier with Mnist
+## Abstract
 
-Classifier Model Implementation as Convolution Neural Network
-
-
+I Implemented Classifier Model built with Convolution Neural Network and some utility code. It shows the changing of loss and accuracy value for every epoch because the code constructed training, validation, test be implemented in same iteration `for` loop.  And the training, validation, test data save in every epoch as a file. I intend  'confusion matrix' and  'loss, accuracy plot'  saved in 'epoch_number' directory by .png file, After end of the each epoch, we can check 'confusion matrix' and  'loss, accuracy plot'. I also implemented it can continue learning in case after the training stop unintentionally during learning .
 
 
 
-## Project Configuration
-
-- Utility Method
-
-  Configured five utility python code file
-
-  1. learning_env_setting.py
-  2. dataset_utils.py
-  3. train_validation_test.py
-  4. basic_utils.py
-  5. cp_utils.py
-
-  Please read the [Method Description](#method-description) for a detailed description 
-
-- Classifier Model
-
-  Implementation using keras
-
-  
 
 
-
-## Method Description
+## Method
 
 #### 1. learning_env_setting.py
 
 - **dir_setting**
 
-  project에 관한 directory를 생성하고 path를 dictionary에 저장
+  create directory for save learning data and save the path.
 
 - **get_classification_metrics**
 
-  loss와 accuracy를 계산할 tensorflow.keras의 Mean, CategoricalAccuracy를 'metric_objects' dictionary에 저장
+  save objects that compute loss, accuracy in the 'metric_objects' dictionary.
 
 - **continue_setting**
 
-  model의 학습이 의도치 않게 멈췄을 때 저장된 model data를 load해서 이어서 학습하게 해주는 method
+  if the model's learning is unintentionally interrupted, help it can learning continue .
 
   
 
@@ -52,7 +30,7 @@ Classifier Model Implementation as Convolution Neural Network
 
 - **load_processing_mnist**
 
-  tensorflow의 Mnist data을 load하고 processing을 진행
+  Load Mnist data of tensorflow and do pre-processing.
 
 
 
@@ -60,29 +38,27 @@ Classifier Model Implementation as Convolution Neural Network
 
 - **go_train**
 
-  training data로 learning
+  learning with data for train.
 
 - **go_validation**
 
-  validation data로 learning을 진행하고 confusion_matrix를 return
+  validation with data for validation, and return value for confusion_matrix .
 
 - **go_test**
 
-  test data로 learning을 진행하고 loss와 accuracy를 .txt file로 저장
+  test with data for test and save the loss and accuracy value as .txt file.
 
   
-
-
 
 #### 4. basic_utils.py
 
 - **resetter**
 
-  metric_objects 안의 keras.Mean, CategoricalAccuracy 값들을 초기 상태로 reset
+  reset the object in `metric_objects` to initial state in every epoch.
 
 - **training_reporter**
 
-  매 epoch마다 validation, train data에 의한 loss와 accuracy를 print
+  print the loss and accuracy about validation, train data in every epoch.
 
   
 
@@ -90,29 +66,64 @@ Classifier Model Implementation as Convolution Neural Network
 
 - **save_losses_model**
 
-  이제까지 학습 된 model을 저장
+  save the model learned so far.
 
 - **loss_acc_visualizer**
 
-  validation, train data에 의한 loss와 accuracy를 twinx line plot으로 표현 후 .png file로 save
+  draw the plot about loss, accuracy of validation by twinx line plot during full epoch and save as .png file.
 
 - **confusion_matrix_visualizer**
 
-  confusion_matrix 값으로 matshow plot을 표현 후 .png file로 save
-
-  
-
-
-
-## Getting Started
+  draw the confusion_matrix plot and save as .png file.
 
 
 
 
+#### 6. model.py
+
+- **MnistClassifier**
+
+  I make classifier by keras.model sub-classing, Sequential API.
+
+  in description file, I Implemented forward propagation of Conv2D and Danse layers.
 
 
 
-## version
+
+
+## Conclusion
+
+I Implement Classifier Model with Mnist data of tensorflow_dataset. And train this network to 50 epoch for half an hour and achieve accuracy 98.55% on the Mnist validation data set.
+
+I make this project for experience that Implement model and utility code like construction of common thesis code. There were many difficulties in the process, I solve those problems by using Stack overflow, Naver Knowledge IN and open kakao community.
+
+
+
+I describe about method and model in markdown file.  open the file for details about method.
+
+- learning env setting.md
+- dataset utils.md
+- train_validation_test.md
+- basic_utils.md
+- cp_utils.md
+- model.md
+- main.md
+
+
+
+---
+
+
+
+### Getting Started
+
+```
+$ MnistClassifier\main.py
+```
+
+
+
+### version
 
 | name             | version |
 | ---------------- | ------- |
