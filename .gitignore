@@ -4,6 +4,6 @@ tmp2.py
 *.npz
 *.index
 *.pb
-*.png
-*.txt
+
+
 train1/
