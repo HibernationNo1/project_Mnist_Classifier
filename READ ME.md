@@ -105,7 +105,7 @@ I make this project for experience that Implement model and utility code like co
 
 ![](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/image/confustion_matrix_visualization.png?raw=true)
 
-- loss and accuracy line plot on train and validation dataset for 0 to 50  50 epoch
+- loss and accuracy line plot on train and validation dataset for 0 to 50 epoch
 
 ![](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/image/losses_accs_visualization.png?raw=true)
 
@@ -145,5 +145,4 @@ $ MnistClassifier\main.py
 | numpy            | 1.19.2  |
 | tensorflow       | 2.4.1   |
 | matplotlib       | 3.3.2   |
-
 
