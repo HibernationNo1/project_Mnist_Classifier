@@ -147,10 +147,3 @@ $ MnistClassifier\main.py
 | matplotlib       | 3.3.2   |
 
 
-
-
-
-
-
-
-
