@@ -130,7 +130,7 @@ I describe about method and model in markdown file.  open the file or click the 
 ### Getting Started
 
 ```
-$ MnistClassifier\main.py
+$ code\main.py
 ```
 
 
