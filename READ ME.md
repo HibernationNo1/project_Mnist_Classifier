@@ -8,7 +8,7 @@ I Implemented Classifier Model built with Convolution Neural Network and some ut
 
 
 
-## Method
+## Functions
 
 #### 1. learning_env_setting.py
 
@@ -88,6 +88,14 @@ I Implemented Classifier Model built with Convolution Neural Network and some ut
   in description file, I Implemented forward propagation of Conv2D and Danse layers.
 
 
+
+**Diagram**
+
+![](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/image/active%20diagram.png?raw=true)
+
+> dark line : express the steps of source code running.
+>
+> blue line : express the parameter that give to function
 
 
 
