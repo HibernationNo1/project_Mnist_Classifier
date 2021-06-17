@@ -13,7 +13,7 @@ class MnistClassifier(Model):
         self.fe.add(MaxPooling2D(pool_size = 2, strides = 2))
         self.fe.add(Conv2D(filters = 32, kernel_size = 5, padding = 'same', activation = 'relu'))  
         self.fe.add(MaxPooling2D(pool_size = 2, strides = 2))
-highlight vimfilerROFile ctermfg=7 guifg=#808080 cterm=NONE gui=NONE
+        
         self.classifier = Sequential()
         self.classifier.add(Flatten())     
         self.classifier.add(Dense(units = 64, activation = 'relu'))
