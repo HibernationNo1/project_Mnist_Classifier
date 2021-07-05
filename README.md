@@ -2,7 +2,13 @@
 
 ## Abstract
 
-I Implemented Classifier Model built with Convolution Neural Network and some utility code. It shows the changing of loss and accuracy value for every epoch because the code constructed training, validation, test be implemented in same iteration `for` loop.  And the training, validation, test data save in every epoch as a file. I intend  'confusion matrix' and  'loss, accuracy plot'  saved in 'epoch_number' directory by .png file, After end of the each epoch, we can check 'confusion matrix' and  'loss, accuracy plot'. I also implemented it can continue learning in case after the training stop unintentionally during learning .
+I Implement Classifier Model with Convolution Neural Network, and some utility code. 
+
+this project shows the changing of loss and accuracy value for every epoch, because the code constructed training, validation, test be implemented in same iteration `for` loop.  
+
+And the training, validation, test data saved in every epoch as a file. I intend  'confusion matrix' and  'loss, accuracy plot'  saved in 'epoch_number' directory as `.png` file, After end of the each epoch, we can check 'confusion matrix' and  'loss, accuracy plot'. 
+
+I also implement it can continue learning in case after the training stop unintentionally during learning .
 
 
 
