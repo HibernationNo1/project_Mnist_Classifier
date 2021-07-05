@@ -1,7 +1,5 @@
 # READ ME
 
-## Abstract
-
 I Implement Classifier Model with Convolution Neural Network, and some utility code. 
 
 this project shows the changing of loss and accuracy value for every epoch, because the code constructed training, validation, test be implemented in same iteration `for` loop.  
