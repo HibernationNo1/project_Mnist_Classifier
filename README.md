@@ -1,8 +1,8 @@
 # READ ME
 
-I Implement Classifier Model with Convolution Neural Network, and some utility code. 
+I Implement Classifier Model with Convolution Neural Network.
 
-this project shows the changing of loss and accuracy value for every epoch, because the code constructed training, validation, test be implemented in same iteration `for` loop.  
+This project shows the changing of loss and accuracy value for every epoch, because the code constructed training, validation, test be implemented in same iteration `for` loop.  
 
 And the training, validation, test data saved in every epoch as a file. I intend  'confusion matrix' and  'loss, accuracy plot'  saved in 'epoch_number' directory as `.png` file, After end of the each epoch, we can check 'confusion matrix' and  'loss, accuracy plot'. 
 
@@ -10,11 +10,33 @@ I also implement it can continue learning in case after the training stop uninte
 
 
 
+**Contents**
+
+- [Functions](#Functions)
+  - [main.py](#main.py)
+  - [learning_env_setting.py](#learning_env_setting.py)
+  - [dataset_utils.py](#dataset_utils.py)
+  - [train_validation_test.py](#train_validation_test.py)
+  - [basic_utils.py](#basic_utils.py)
+  - [cp_utils.py](#cp_utils.py)
+  - [model.py](#model.py)
+- [Conclusion](#Conclusion)
+- [Getting Started](#'Getting Started')
+- [Version](#Version)
+
 
 
 ## Functions
 
-#### 1. learning_env_setting.py
+#### 0. [main.py](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/description/main.md)
+
+Hyperparameter setting, call setting method, model training, validation, and test by `for` loop
+
+
+
+
+
+#### 1. [learning_env_setting.py](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/description/learning%20env%20setting.md)
 
 - **dir_setting**
 
@@ -30,7 +52,7 @@ I also implement it can continue learning in case after the training stop uninte
 
   
 
-#### 2. dataset_utils.py
+#### 2. [dataset_utils.py](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/description/dataset%20utils.md)
 
 - **load_processing_mnist**
 
@@ -38,7 +60,7 @@ I also implement it can continue learning in case after the training stop uninte
 
 
 
-#### 3. train_validation_test.py
+#### 3. [train_validation_test.py](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/description/train_validation_test.md)
 
 - **go_train**
 
@@ -54,7 +76,7 @@ I also implement it can continue learning in case after the training stop uninte
 
   
 
-#### 4. basic_utils.py
+#### 4. [basic_utils.py](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/description/basic_utils.md)
 
 - **resetter**
 
@@ -66,7 +88,7 @@ I also implement it can continue learning in case after the training stop uninte
 
   
 
-#### 5. cp_utils.py
+#### 5. [cp_utils.py](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/description/cp_utils.md)
 
 - **save_losses_model**
 
@@ -83,7 +105,7 @@ I also implement it can continue learning in case after the training stop uninte
 
 
 
-#### 6. model.py
+#### 6. [model.py](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/description/Model.md)
 
 - **MnistClassifier**
 
@@ -135,11 +157,9 @@ I describe about method and model in markdown file.  open the file or click the 
 
 
 
----
 
 
-
-### Getting Started
+## Getting Started
 
 ```
 $ code\main.py
@@ -147,7 +167,7 @@ $ code\main.py
 
 
 
-### version
+## Version
 
 | name             | version |
 | ---------------- | ------- |
