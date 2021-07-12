@@ -28,11 +28,13 @@ I also implement it can continue learning in case after the training stop uninte
 
 ## Functions
 
+I describe about method and model in markdown file.  Open the file or click the rink for details about method.
+
+
+
 #### 0. [main.py](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/description/main.md)
 
 Hyperparameter setting, call setting method, model training, validation, and test by `for` loop
-
-
 
 
 
@@ -142,20 +144,6 @@ I make this project for experience that Implement model and utility code like co
 - loss and accuracy line plot on train and validation dataset for 0 to 50 epoch
 
 ![](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/image/Losses_accs_visualization.png?raw=true)
-
-
-
-I describe about method and model in markdown file.  open the file or click the rink for details about method.
-
-- [learning env setting.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/learning%20env%20setting.md)
-- [dataset utils.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/dataset%20utils.md)
-- [train_validation_test.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/train_validation_test.md)
-- [basic_utils.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/basic_utils.md)
-- [cp_utils.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/cp_utils.md)
-- [model.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/Model.md)
-- [main.md](https://github.com/HibernationNo1/project_Mnist_Classifier/blob/master/method_description/main.md)
-
-
 
 
 

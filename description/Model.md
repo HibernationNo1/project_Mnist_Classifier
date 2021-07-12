@@ -70,9 +70,9 @@ input image size is 28 × 28, shape is (None, 28, 28, 1)
 
 
 
-### Manually Implementation
+### Without Subclassing
 
-I tried implementation forward propagation of Model manually 
+Implemented forward propagation without using keras subclassing.
 
 And left comment for explain about the code.
 
